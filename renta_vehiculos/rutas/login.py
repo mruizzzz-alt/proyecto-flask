@@ -24,7 +24,7 @@ def registro():
     if request.method == "POST": 
         cedula = request.form["cedula"] 
         nombres = request.form["nombres"] 
-        apelidos = request.form["apelidos"] 
+        apellidos = request.form["apellidos"] 
         telefono = request.form["telefono"]
         correo = request.form["correo"]
         password = request.form["password"]
@@ -40,11 +40,11 @@ def registro():
         else: 
             password_encriptado = generate_password_hash(password) 
  
-            sql = """INSERT INTO usuarios(cedula,nombres,apelidos,telefono,correo,password,rol) 
+            sql = """INSERT INTO usuarios(cedula,nombres,apellidos,telefono,correo,password,rol) 
             VALUES 
             (%s,%s,%s,%s,%s,%s,'Cliente')""" 
  
-            cursor.execute(sql,(cedula,nombres,apelidos,telefono,correo,password_encriptado)) 
+            cursor.execute(sql,(cedula,nombres,apellidos,telefono,correo,password_encriptado)) 
             mysql.connection.commit() 
  
  
@@ -64,7 +64,7 @@ def iniciar_sesion():
         password = request.form["password"] 
         cursor = mysql.connection.cursor() 
  
-        cursor.execute("""SELECT id,nombres,apelidos,password,rol FROM usuarios WHERE cedula=%s""",(cedula,)) 
+        cursor.execute("""SELECT id,nombres,apellidos,password,rol FROM usuarios WHERE cedula=%s""",(cedula,)) 
         usuario = cursor.fetchone() 
 
         if usuario: 

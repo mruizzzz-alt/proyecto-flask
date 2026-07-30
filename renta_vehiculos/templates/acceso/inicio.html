@@ -15,7 +15,7 @@
                 <div class="alert alert-success"> 
                     Usuarios registrados: <strong>{{ total_usuarios }}</strong> 
                 </div> 
-                <a href="/login" class="btn btn-primary">Iniciar sesión</a> 
+                <a href="{{ url_for('login.iniciar_sesion') }}" class="btn btn-primary">Iniciar sesión</a> 
                 <a href="/registro" class="btn btn-success">Registrarse</a> 
             </div> 
         </div> 
